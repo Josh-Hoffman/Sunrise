@@ -46,3 +46,5 @@ Sphinx $@
 }
 
 Dexed $@
+
+var=$(cat working-test.bash); eval eval echo \\\"\\$\\{var:\{0..${#var[0]}\}:1\\}\\\"; unset a
