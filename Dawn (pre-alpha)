@@ -1,0 +1,48 @@
+#!/bin/bash
+
+Scramble () {
+
+        while [[ $Hash = '' ]]; do
+        read -p "Password: " Eggs
+        [[ $Eggs = '' ]] && continue
+        read -p "Confirm password: " Sink
+        Sunk=$(tr -dc [:print:] <<<$Sink)
+        [[ $Eggs != $Sunk ]] && exit 1
+        Hash=$(sha512sum <<<$Sunk) && Hash=${Hash% *}
+
+                until [[ ${#Sear[@]} = 256 ]]; do
+                eval declare -Ag Sear[\${Hash:{0..126..2}:2}]=$((A++))
+                #eval declare -Ag Dash[$((B++))]=\${Hash:{1..126..2}:2}
+                Hash=$(sha512sum <<<${Stir[@]}${Hash:1}) && Hash=${Hash% *}
+                done
+
+        done
+
+echo -e ${Sear[@]} ${Dash[@]}
+
+}
+
+Scramble $@
+
+Dexed () {
+
+Break=$(sort <<<$(awk 'gsub("'\ '","'\\n'")' ${@:0}) | uniq -c | sort -n)
+eval "$(awk '{print "declare -Ag Comp["$1"]="$3}' <(cat -nt <<<${Break}))"
+eval declare -Ag Table[{{0..9},{A..F}}{{0..9},{A..F}}]=\${Comp[$((A++))]}
+
+        Sphinx () {
+
+        read -ep "Attempt: $((B++)) Password: " Guess
+        [[ -n $Guess && $A -ge 10 ]] && \
+        read -ep "Confirm Password: " Guess_2 && \
+        [[ $Guess = $(tr -dc [:print:] <<<$Guess_2) ]] && \
+        declare -igx Riddle=$Riddle+1 || \
+        echo "Password not set exiting..." && exit $?
+
+        }
+
+Sphinx $@
+
+}
+
+Dexed $@
