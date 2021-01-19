@@ -48,3 +48,5 @@ Sphinx $@
 Dexed $@
 
 var=$(cat working-test.bash); eval eval echo \\\"\\$\\{var:\{0..${#var[0]}\}:1\\}\\\"; unset a
+declare -agx X\+\=\({{0..9},{A..F}}{{0..9},{A..F}}\)
+eval declare -Ag Y[\${X[$((Z++))]}]={0..1}{0..1}{0..1}{0..1}{0..1}{0..1}{0..1}{0..1}
