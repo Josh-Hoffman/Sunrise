@@ -61,7 +61,7 @@ declare -g `awk '/{/-/}/ {print "Spot["$1"]="$2}' <(cat -n $@)`
         for a in ${!Spot[@]}; do
         [[ ${Spot[$a]} != \} ]] && \
         Hold=($a ${Hold[@]}) && continue || \
-                declare -g Lock[$(($a-${Hold[0]}))00$((A++))]=${Hold[0]},$a
+        declare -g Lock[$(($a-${Hold[0]}))00$((A++))]=${Hold[0]},$a
         Hold=(${Hold[@]:1})
         done
 
