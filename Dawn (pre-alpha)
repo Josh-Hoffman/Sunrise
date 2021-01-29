@@ -50,3 +50,29 @@ Dexed $@
 var=$(cat working-test.bash); eval eval echo \\\"\\$\\{var:\{0..${#var[0]}\}:1\\}\\\"; unset a
 declare -agx X\+\=\({{0..9},{A..F}}{{0..9},{A..F}}\)
 eval declare -Ag Y[\${X[$((Z++))]}]={0..1}{0..1}{0..1}{0..1}{0..1}{0..1}{0..1}{0..1}
+
+cat files/home/Scripts/Wuzzy/swap                  
+
+#!bin/bash                                                                                                  Scope () {
+
+Time=$(date +'%H%M%S%m%d%Y')
+declare -g `awk '/{/-/}/ {print "Spot["$1"]="$2}' <(cat -n $@)`
+
+        for a in ${!Spot[@]}; do
+        [[ ${Spot[$a]} != \} ]] && \
+        Hold=($a ${Hold[@]}) && continue || \
+                declare -g Lock[$(($a-${Hold[0]}))00$((A++))]=${Hold[0]},$a
+        Hold=(${Hold[@]:1})
+        done
+
+        for a in ${!Lock[@]}; do
+        [[ -z $Down ]] && Down=${Lock[$a]} && continue || \
+        declare -Ag Tick[$Down]=$(sed -n ${Lock[$a]}p $@ | tee >(md5sum);)
+
+                for b in $(eval echo {${Lock[$a]/\,/\.\.}}); do
+                Tock[$b]=$(sed -n ${b}p $@ | tee >(md5sum);)
+                done
+
+        done
+
+}
