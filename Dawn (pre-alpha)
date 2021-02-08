@@ -76,3 +76,7 @@ declare -g `awk '/{/-/}/ {print "Spot["$1"]="$2}' <(cat -n $@)`
         done
 
 }
+
+
+cat -nAv <<<${_^^}
+cat -nAv <<<$H_,,}\"
