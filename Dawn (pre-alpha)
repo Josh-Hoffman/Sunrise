@@ -85,17 +85,24 @@ cat -nAv <<<$H_,,}\"
 n/bash
 
 Paver () {
-                                                                declare -g Block=(`awk '/{/-/}/ {Sec[A++]=NR; gsub(/'"}"'/,"End"); print "["$1"]="A","NR-Sec[0]","NR}' $@`)
+
+declare -g Block=(`awk '/{/-/}/ {Sec[A++]=NR; gsub(/'"}"'/,"End"); print "["$1"]="A","NR-Sec[0]","NR}' $@`)
 eval declare -Ag Slurry=( ${Block[@]} )
 
-        for Mortar in ${Block[@]%*]*}; do
-        ((Sand++))
-        [[ ${Mortar#[*} != End ]] \
-        && Set=(${Mortar#[*} ${Set[@]}) \
-        && continue                                                     declare -Ag Build+=(                                            [${Set[0]}]=${Slurry[${Set[0]}]#*]=*},\                         [${Set[0]}]+=${Block[$((Sand-1))]#*]=*},${#Set[@]} )            Set=(${Set[@]:1})
-        done                                                                                                                            for a in ${!Build[@]}; do
-        echo -e  $a \\t ${Build[$a]}
-        done
+	for Mortar in ${Block[@]%*]*}; do
+	((Sand++))
+	[[ ${Mortar#[*} != End ]] \
+	&& Set=(${Mortar#[*} ${Set[@]}) \
+	&& continue	
+	declare -Ag Build+=( 
+	[${Set[0]}]=${Slurry[${Set[0]}]#*]=*},\
+	[${Set[0]}]+=${Block[$((Sand-1))]#*]=*},${#Set[@]} )
+	Set=(${Set[@]:1})
+	done
+
+	for a in ${!Build[@]}; do 
+	echo -e  $a \\t ${Build[$a]} 
+	done
 
 }
 
