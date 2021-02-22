@@ -107,3 +107,5 @@ eval declare -Ag Slurry=( ${Block[@]} )
 }
 
 Paver $@
+
+declare -i Fu[$((Z++))]=${ka:=5}{+,-}${Bo:=50}
